@@ -163,8 +163,11 @@ const SettingsManager = ({ isDarkMode }) => {
                             background: 'var(--accent)', 
                             textDecoration: 'none', 
                             display: 'inline-flex', 
-                            alignItems: 'center' 
+                            alignItems: 'center',
+                            transition: 'background-color 0.2s ease'
                         }}
+                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--accent)'}
                     >
                         Upgrade Now
                     </a>
@@ -194,7 +197,7 @@ const SettingsManager = ({ isDarkMode }) => {
             
             {isProTab && (
                 <div style={{ marginTop: '40px', padding: '32px', background: 'var(--bg-secondary)', borderRadius: '16px', border: '1px solid var(--border)' }}>
-                    <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem' }}>AI Configuration</h3>
+                    <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', color: '#fff' }}>AI Configuration</h3>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
                         <div>
                             <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>Gemini API Key</label>
