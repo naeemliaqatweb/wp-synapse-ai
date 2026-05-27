@@ -32,13 +32,15 @@
 }
 
 /* Scope body styles only to our plugin pages */
-[class*="page_wp-synapse-ai"] {
+.toplevel_page_wp-synapse-ai,
+.admin_page_wp-synapse-ai-settings {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
-[class*="page_wp-synapse-ai"] #wpbody-content {
+.toplevel_page_wp-synapse-ai #wpbody-content,
+.admin_page_wp-synapse-ai-settings #wpbody-content {
     background-color: var(--bg-primary);
 }
 
@@ -59,20 +61,30 @@
 }
 
 /* Aggressive WP UI Hiding for all Plugin Pages */
-[class*="page_wp-synapse-ai"] #wpcontent,
-[class*="page_wp-synapse-ai"] #wpbody-content {
+.toplevel_page_wp-synapse-ai #wpcontent,
+.toplevel_page_wp-synapse-ai #wpbody-content,
+.admin_page_wp-synapse-ai-settings #wpcontent,
+.admin_page_wp-synapse-ai-settings #wpbody-content {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-[class*="page_wp-synapse-ai"] #screen-meta,
-[class*="page_wp-synapse-ai"] #screen-meta-links,
-[class*="page_wp-synapse-ai"] #wpfooter,
-[class*="page_wp-synapse-ai"] .update-nag,
-[class*="page_wp-synapse-ai"] .notice,
-[class*="page_wp-synapse-ai"] .updated,
-[class*="page_wp-synapse-ai"] .error,
-[class*="page_wp-synapse-ai"] .is-dismissible {
+.toplevel_page_wp-synapse-ai #screen-meta,
+.toplevel_page_wp-synapse-ai #screen-meta-links,
+.toplevel_page_wp-synapse-ai #wpfooter,
+.toplevel_page_wp-synapse-ai .update-nag,
+.toplevel_page_wp-synapse-ai .notice,
+.toplevel_page_wp-synapse-ai .updated,
+.toplevel_page_wp-synapse-ai .error,
+.toplevel_page_wp-synapse-ai .is-dismissible,
+.admin_page_wp-synapse-ai-settings #screen-meta,
+.admin_page_wp-synapse-ai-settings #screen-meta-links,
+.admin_page_wp-synapse-ai-settings #wpfooter,
+.admin_page_wp-synapse-ai-settings .update-nag,
+.admin_page_wp-synapse-ai-settings .notice,
+.admin_page_wp-synapse-ai-settings .updated,
+.admin_page_wp-synapse-ai-settings .error,
+.admin_page_wp-synapse-ai-settings .is-dismissible {
   display: none !important;
 }
 
