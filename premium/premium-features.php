@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Helper to check if the user is a paying or trial premium user.
  */
 function wp_synapse_ai_is_premium_user() {
-    return wp_synapse_ai_fs()->can_use_premium_code();
+    return wsatuwifm_fs()->can_use_premium_code();
 }
 
 /**

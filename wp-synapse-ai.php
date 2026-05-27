@@ -15,43 +15,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-// Create a helper function for easy Freemius SDK access.
-function wp_synapse_ai_fs() {
-    global $wp_synapse_ai_fs;
+if ( function_exists( 'wsatuwifm_fs' ) ) {
+    wsatuwifm_fs()->set_basename( true, __FILE__ );
+} else {
+    // Create a helper function for easy SDK access.
+    function wsatuwifm_fs() {
+        global $wsatuwifm_fs;
 
-    if ( ! isset( $wp_synapse_ai_fs ) ) {
-        // Include Freemius SDK.
-        if ( file_exists( dirname( __FILE__ ) . '/freemius/start.php' ) ) {
-            require_once dirname( __FILE__ ) . '/freemius/start.php';
+        if ( ! isset( $wsatuwifm_fs ) ) {
+            // Include Freemius SDK.
+            if ( file_exists( dirname( __FILE__ ) . '/freemius/start.php' ) ) {
+                require_once dirname( __FILE__ ) . '/freemius/start.php';
+            }
+
+            $wsatuwifm_fs = fs_dynamic_init( array(
+                'id'                  => '30668',
+                'slug'                => 'wp-synapse-ai-the-ultimate-wordpress-ide-file-manager',
+                'type'                => 'plugin',
+                'public_key'          => 'pk_e2f8ac2c0b98a875974472dbf0966',
+                'is_premium'          => true,
+                'premium_suffix'      => 'Paid',
+                'has_premium_version' => true,
+                'has_addons'          => false,
+                'has_paid_plans'      => true,
+                'is_org_compliant'    => true,
+                'wp_org_gatekeeper'   => 'OA7#BoRiBNqdf52FvzEf!!074aRLPs8fspif$7K1#4u4Csys1fQlCecVcUTOs2mcpeVHi#C2j9d09fOTvbC0HloPT7fFee5WdS3G',
+                'trial'               => array(
+                    'days'               => 7,
+                    'is_require_payment' => true,
+                ),
+                'menu'                => array(
+                    'slug'           => 'wp-synapse-ai',
+                    'first-path'     => 'admin.php?page=wp-synapse-ai',
+                    'support'        => false,
+                    'account'        => true,
+                ),
+            ) );
         }
 
-        $wp_synapse_ai_fs = fs_dynamic_init( [
-            'id'                  => '30668',
-            'slug'                => basename( dirname( __FILE__ ) ),
-            'type'                => 'plugin',
-            'public_key'          => 'pk_e358b5e20ac05e94b2a8d5621de4e',
-            'is_premium'          => false,
-            'has_addons'          => false,
-            'has_paid_plans'      => true,
-            'trial'               => [
-                'days'               => 7,
-                'is_require_payment' => false,
-            ],
-            'menu'                => [
-                'slug'           => 'wp-synapse-ai',
-                'first-path'     => 'admin.php?page=wp-synapse-ai',
-                'support'        => true,
-                'account'        => true, // Automatically handles account / licensing views
-            ],
-        ] );
+        return $wsatuwifm_fs;
     }
 
-    return $wp_synapse_ai_fs;
+    // Init Freemius.
+    wsatuwifm_fs();
+    // Signal that SDK was initiated.
+    do_action( 'wsatuwifm_fs_loaded' );
 }
-
-// Init Freemius.
-wp_synapse_ai_fs();
-do_action( 'wp_synapse_ai_fs_loaded' );
 
 // Define Constants
 define( 'WP_SYNAPSE_AI_VERSION', '1.0.1' );
@@ -97,7 +106,7 @@ if ( file_exists( WP_SYNAPSE_AI_PATH . 'premium/premium-admin.php' ) ) {
 }
 
 // Load Premium logic conditionally
-if ( wp_synapse_ai_fs()->can_use_premium_code() ) {
+if ( wsatuwifm_fs()->can_use_premium_code() ) {
     if ( file_exists( WP_SYNAPSE_AI_PATH . 'premium/premium-loader.php' ) ) {
         require_once WP_SYNAPSE_AI_PATH . 'premium/premium-loader.php';
     }

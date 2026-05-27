@@ -79,7 +79,7 @@ class WP_Synapse_Core {
         ];
         $settings = get_option( 'wp_synapse_ai_settings', $defaults );
         $settings = array_merge( $defaults, (array) $settings );
-        $settings['is_premium'] = wp_synapse_ai_fs()->can_use_premium_code();
+        $settings['is_premium'] = wsatuwifm_fs()->can_use_premium_code();
         return $settings;
     }
 
@@ -107,7 +107,7 @@ class WP_Synapse_Core {
         }
 
         // Pro features require premium status
-        return wp_synapse_ai_fs()->can_use_premium_code();
+        return wsatuwifm_fs()->can_use_premium_code();
     }
 
 	private function __construct() {
@@ -368,9 +368,9 @@ class WP_Synapse_Core {
 			'nonce' => wp_create_nonce( 'wp_rest' ),
 			'assetsUrl' => WP_SYNAPSE_AI_URL . 'admin/src/assets',
 			'siteId' => md5( site_url() ),
-			'isPremium' => wp_synapse_ai_fs()->can_use_premium_code(),
-			'upgradeUrl' => wp_synapse_ai_fs()->get_upgrade_url(),
-			'trialUrl' => wp_synapse_ai_fs()->get_trial_url(),
+			'isPremium' => wsatuwifm_fs()->can_use_premium_code(),
+			'upgradeUrl' => wsatuwifm_fs()->get_upgrade_url(),
+			'trialUrl' => wsatuwifm_fs()->get_trial_url(),
 		] );
 	}
 }
