@@ -408,6 +408,9 @@ class WP_Synapse_Core {
 				font-size: 14px !important;
 				line-height: 1.6 !important;
 			}
+			#fs_connect .fs-content h2 {
+				color: #ffffff !important;
+			}
 			#fs_connect .fs-license-key-container {
 				background: #0D1117 !important;
 				border: 1px solid #30363d !important;
