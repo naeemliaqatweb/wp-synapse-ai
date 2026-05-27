@@ -59,7 +59,7 @@ const SettingsManager = ({ isDarkMode }) => {
   };
 
   const ToggleSwitch = ({ label, checked, onChange, isPro = false }) => {
-    const isDisabled = isPro && !localSettings?.is_premium && !localSettings?.dev_mode;
+    const isDisabled = isPro && !localSettings?.is_premium;
     return (
       <div style={{ 
           display: 'flex', 
@@ -137,7 +137,7 @@ const SettingsManager = ({ isDarkMode }) => {
                 </button>
             </div>
 
-            {isProTab && !localSettings.is_premium && !localSettings.dev_mode && (
+            {isProTab && !localSettings.is_premium && (
                 <div style={{ 
                     padding: '24px', 
                     background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1))', 

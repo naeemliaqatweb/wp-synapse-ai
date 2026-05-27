@@ -90,9 +90,6 @@ class WP_Synapse_Core {
     public function is_feature_enabled( $feature ) {
         $settings = $this->get_settings();
         
-        // Dev mode unlocks everything
-        if ( ! empty( $settings['dev_mode'] ) ) return true;
-
         $features = isset( $settings['features'] ) ? (array) $settings['features'] : [];
         
         // Check if feature is enabled in settings

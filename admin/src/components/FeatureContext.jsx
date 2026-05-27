@@ -34,9 +34,6 @@ export const FeatureProvider = ({ children }) => {
         
         // If the feature is explicitly disabled by the user, honor that choice
         if (settings.features[feature] === false) return false;
-
-        // If in dev mode, allow all other features even if not premium
-        if (settings.dev_mode) return true;
         
         const basicFeatures = ['monaco_editor', 'file_manager', 'basic_search', 'theme_toggle', 'uploads'];
         if (basicFeatures.includes(feature)) {

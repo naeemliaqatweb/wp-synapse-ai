@@ -15,18 +15,26 @@ add_action( 'admin_menu', function() {
             'manage_options',
             'wp-synapse-ai-upgrade',
             function() {
-                // Redirect user directly to the Freemius checkout / pricing page
+                // Fallback rendering if redirect doesn't happen
                 $checkout_url = wsatuwifm_fs()->get_upgrade_url();
-                echo '<div style="padding: 30px; text-align: center; font-family: sans-serif;">';
-                echo '<h2>' . esc_html__( 'Redirecting to checkout...', 'wp-synapse-ai' ) . '</h2>';
-                echo '<p>' . sprintf( __( 'If you are not redirected automatically, <a href="%s">click here</a>.', 'wp-synapse-ai' ), esc_url( $checkout_url ) ) . '</p>';
+                echo '<div style="padding: 50px 30px; text-align: center; font-family: sans-serif; background: #0D1117; color: #fff; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">';
+                echo '<h2 style="color: #fff; margin-bottom: 10px;">' . esc_html__( 'Redirecting to checkout...', 'wp-synapse-ai' ) . '</h2>';
+                echo '<p style="color: #8b949e;">' . sprintf( __( 'If you are not redirected automatically, <a href="%s" style="color: #58a6ff; font-weight: bold; text-decoration: none;">click here to upgrade</a>.', 'wp-synapse-ai' ), esc_url( $checkout_url ) ) . '</p>';
                 echo '</div>';
-                echo '<script>window.location.href = "' . esc_url( $checkout_url ) . '";</script>';
-                exit;
             }
         );
     }
 }, 30 );
+
+// Perform the redirect early before headers are sent
+add_action( 'admin_init', function() {
+    if ( isset( $_GET['page'] ) && $_GET['page'] === 'wp-synapse-ai-upgrade' ) {
+        if ( function_exists( 'wsatuwifm_fs' ) && ! wsatuwifm_fs()->can_use_premium_code() ) {
+            wp_redirect( wsatuwifm_fs()->get_upgrade_url() );
+            exit;
+        }
+    }
+} );
 
 // Renders a non-obtrusive notice in the plugin page inviting users to upgrade
 add_action( 'admin_notices', function() {
