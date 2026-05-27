@@ -121,6 +121,7 @@ class WP_Synapse_Core {
 	private function init_hooks() {
 		add_action( 'admin_menu', [ $this, 'register_admin_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
+		add_action( 'admin_head', [ $this, 'inject_custom_admin_styles' ] );
 	}
 
 	public function register_admin_menu() {
@@ -372,5 +373,125 @@ class WP_Synapse_Core {
 			'upgradeUrl' => wsatuwifm_fs()->get_upgrade_url(),
 			'trialUrl' => wsatuwifm_fs()->get_trial_url(),
 		] );
+	}
+
+	public function inject_custom_admin_styles() {
+		?>
+		<style id="wp-synapse-ai-freemius-dark-theme">
+			/* Freemius Connect Dialog Dark Theme */
+			#fs_connect, 
+			.fs-anonymous-disabled {
+				background: #0D1117 !important;
+				border: 1px solid #30363d !important;
+				color: #c9d1d9 !important;
+				box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+				border-radius: 12px !important;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+				margin-top: 30px !important;
+			}
+			#fs_connect .fs-box-container {
+				background: #161b22 !important;
+				border-top: 1px solid #30363d !important;
+				border-bottom: 1px solid #30363d !important;
+			}
+			#fs_connect .fs-header {
+				background: #0d1117 !important;
+				border-bottom: 1px solid #30363d !important;
+				padding: 15px 20px !important;
+			}
+			#fs_connect .fs-content {
+				background: #161b22 !important;
+				color: #c9d1d9 !important;
+			}
+			#fs_connect .fs-content p {
+				color: #c9d1d9 !important;
+				font-size: 14px !important;
+				line-height: 1.6 !important;
+			}
+			#fs_connect .fs-license-key-container {
+				background: #0D1117 !important;
+				border: 1px solid #30363d !important;
+				border-radius: 6px !important;
+			}
+			#fs_connect .fs-license-key-container input {
+				background: transparent !important;
+				color: #ffffff !important;
+				border: none !important;
+				box-shadow: none !important;
+			}
+			#fs_connect .fs-license-key-container i {
+				color: #8b949e !important;
+			}
+			#fs_connect .fs-actions {
+				background: #0D1117 !important;
+				border-top: 1px solid #30363d !important;
+				padding: 15px 20px !important;
+			}
+			#fs_connect .fs-actions .button-primary {
+				background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+				border: none !important;
+				color: #ffffff !important;
+				font-weight: 700 !important;
+				text-shadow: none !important;
+				box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+				border-radius: 6px !important;
+				height: auto !important;
+				padding: 8px 20px !important;
+				cursor: pointer !important;
+			}
+			#fs_connect .fs-actions .button-primary:hover {
+				opacity: 0.9 !important;
+			}
+			#fs_connect .fs-permissions {
+				background: #161b22 !important;
+				border-top: 1px solid #30363d !important;
+			}
+			#fs_connect .fs-permissions a {
+				color: #58a6ff !important;
+			}
+			#fs_connect .fs-permissions ul li {
+				color: #c9d1d9 !important;
+				border-bottom: 1px solid #21262d !important;
+			}
+			#fs_connect .fs-permissions ul li p {
+				color: #8b949e !important;
+			}
+			#fs_connect .fs-freemium-licensing {
+				background: #161b22 !important;
+				border-top: 1px solid #30363d !important;
+				color: #8b949e !important;
+			}
+			#fs_connect .fs-freemium-licensing a {
+				color: #58a6ff !important;
+			}
+			#fs_connect .fs-terms {
+				color: #8b949e !important;
+			}
+			#fs_connect .fs-terms a {
+				color: #8b949e !important;
+			}
+			#fs_connect .fs-terms a:hover {
+				color: #58a6ff !important;
+			}
+			#fs_connect #fs_marketing_optin {
+				background: #0d1117 !important;
+				border: 1px solid #30363d !important;
+				border-radius: 6px !important;
+				padding: 12px !important;
+			}
+			#fs_connect #fs_marketing_optin .fs-message {
+				color: #8b949e !important;
+			}
+			#fs_connect #fs_marketing_optin label {
+				color: #c9d1d9 !important;
+			}
+			#fs_connect #fs_orphan_license_message {
+				background: rgba(240, 135, 0, 0.1) !important;
+				border: 1px solid rgba(240, 135, 0, 0.2) !important;
+				color: #f08700 !important;
+				border-radius: 6px !important;
+			}
+		</style>
+		<?php
 	}
 }
