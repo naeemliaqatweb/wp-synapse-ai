@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Synapse Pro – AI Code Editor
- * Plugin URI: https://synapse.com
+ * Plugin URI: https://synapse.com/wp-synapse-ai
  * Description: The ultimate professional IDE for WordPress. Features advanced global code search (grep), visual side-by-side Diff mode, Monaco Editor (VS Code engine), and enterprise file management.
  * Version: 1.0.1
  * Author: Synapse Team
